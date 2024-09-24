@@ -1,0 +1,50 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sknobs"
+dynamic = ["version"]
+description = "Simulation Knobs: Command-line parser for common Silicon verification languages"
+readme = "README.md"
+requires-python = ">=3.6"
+license = {file = "../../LICENSE"}
+keywords = ["Verilog", "SystemVerilog", "UVM", "Verification"]
+authors = [
+  {name = "Jayanto Minocha", email = "jayantom@users.noreply.github.com" },
+  {name = "Josh Scheid", email = "joshuascheid@users.noreply.github.com" },
+  {name = "Paul Donahue", email = "paul-donahue@users.noreply.github.com" },
+]
+maintainers = [
+  {name = "Jayanto Minocha", email = "jayantom@users.noreply.github.com" },
+]
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "Environment :: Console",
+  "Intended Audience :: Developers",
+  "Topic :: Scientific/Engineering :: Electronic Design Automation (EDA)",
+  "Topic :: System :: Hardware",
+  "License :: OSI Approved :: Apache Software License",
+  "Operating System :: POSIX",
+  "Programming Language :: C",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.6",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Perl",
+  "Programming Language :: Tcl",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/jayantom/sknobs"
+"Bug Reports" = "https://github.com/jayantom/sknobs/issues"
+
+[tool.setuptools]
+ext-modules = [
+  {name = "sknobs", sources = ["../c/sknobs.c", "sknobs_ext.c"], include-dirs = ["../c", "../c/external"], language = "c"}
+]
+
+[tool.setuptools.packages]
+find = {}
+
+[tool.setuptools.dynamic]
+version = {attr = "sknobs.__version__"}
